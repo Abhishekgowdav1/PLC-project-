@@ -47,14 +47,10 @@ def player_vs_bot():
         position_input(player1 - 1 , 'X')
         
         # Check win condition for Player 1
-        count=0
         for i in win_conditions:
-            for j in range(2):
-                if i[j] in player_1_list:
-                    count +=1 
-        if count==3:
-            winner_found = "yes"
-            break
+            if i[0] in player_1_list and i[1] in player_1_list and i[2] in player_1_list:
+                winner_found = "yes"
+                break
         if winner_found == "yes":
             print_board()
             print("Player 1 wins!")
@@ -84,14 +80,11 @@ def player_vs_bot():
         player_2_list.append(player2)
         position_input(player2 - 1 , 'O')
     
-       count=0
+        
         for i in win_conditions:
-            for j in range(2):
-                if i[j] in player_2_list:
-                    count +=1 
-        if count==3:
-            winner_found = "yes"
-            break
+            if i[0] in player_2_list and i[1] in player_2_list and i[2] in player_2_list:
+                winner_found = "yes"
+                break
         
         if winner_found == "yes":
             print_board()
@@ -119,14 +112,10 @@ def player_vs_player():
         player_1_list.append(player1)
         position_input(player1 - 1 , 'X')
         
-        count=0
         for i in win_conditions:
-            for j in range(2):
-                if i[j] in player_1_list:
-                    count +=1 
-        if count==3:
-            winner_found = "yes"
-            break        
+            if i[0] in player_1_list and i[1] in player_1_list and i[2] in player_1_list:
+                winner_found = "yes"
+                break        
         if winner_found == "yes":
             print_board()
             print("Player 1 wins!")
@@ -155,14 +144,10 @@ def player_vs_player():
         player_2_list.append(player2)
         position_input(player2 - 1 , 'O')
     
-        count=0
         for i in win_conditions:
-            for j in range(2):
-                if i[j] in player_2_list:
-                    count +=1 
-        if count==3:
-            winner_found = "yes"
-            break        
+            if i[0] in player_2_list and i[1] in player_2_list and i[2] in player_2_list:
+                winner_found = "yes"
+                break        
         if winner_found == "yes" :
             print_board()
             print("bot wins!")
