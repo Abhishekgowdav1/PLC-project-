@@ -7,23 +7,23 @@ win_conditions = [
  
 # random.randint(a, b)	Random integer	Inclusive of both a and b.
 
-
-# Board list (index 0 is unused, 1-9 represent the positions)
 board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 player_1_list = []
 player_2_list = []
 
 def print_board():
-    print(f" {board[0]}  | {board[1]}  | {board[2]} ")
-    print("-----------")
-    print(f" {board[3]}  | {board[4]}  | {board[5]} ")
-    print("-----------")
-    print(f" {board[6]}  | {board[7]}  | {board[8]} ")
+    print(f" {board[0]} | {board[1]} | {board[2]} ")
+    print("----+----+----")
+    print(f" {board[3]} | {board[4]} | {board[5]} ")
+    print("----+----+----")
+    print(f" {board[6]} | {board[7]} | {board[8]} ")
+
+
+
 
 def position_input(y, player_symbol):
     board[y] = player_symbol
-
 
 def player_vs_bot():
     while True:
@@ -37,14 +37,14 @@ def player_vs_bot():
                 print("Invalid position. Please enter a number between 1 and 9.")
                 continue
             if player1 in player_1_list or player1 in player_2_list:
-                print("Position already taken. Please choose a different position.")
+                print("Naha Naha 🙌❌ Position already taken. Please choose a different position.")
                 continue
         except ValueError:
             print("Invalid input. Please enter a number between 1 and 9.")
             continue
 
         player_1_list.append(player1)
-        position_input(player1 - 1 , 'X')
+        position_input(player1 - 1 , '❌')
         
         # Check win condition for Player 1
         for i in win_conditions:
@@ -53,42 +53,42 @@ def player_vs_bot():
                 break
         if winner_found == "yes":
             print_board()
-            print("Player 1 wins!")
+            print("Player 1 wins! 🎉🎉🎉")
+            print("BOT : Enjoy it while you can 😒, next round belongs to me 😏")
             break
         print_board()
 
         if winner_found == "no" and len(player_1_list) + len(player_2_list) == 9:
             print_board()
-            print("It's a draw!")
-            print("wana play again? ")
+            print("It's a draw! 🤝")
+            # print("wana play again?")
             break
 
         # Player 2 input
-        try:
+        while True:
             player2 = random.randint(1, 9)
-            print("BOT is playing its move .....}")
-            if player2 < 1 or player2 > 9:
-                print("Invalid position. Please enter a number between 1 and 9.")
-                continue
-            if player2 in player_1_list or player2 in player_2_list:
-                print("Position already taken. Please choose a different position.")
-                continue
-        except ValueError:
-            print("Invalid input. Please enter a number between 1 and 9.")
-            continue
-    
+
+            if player2 not in player_1_list and player2 not in player_2_list:
+                print("\nBOT is playing its move.....")
+                print(f"Bot chose {player2}")
+                break   
         player_2_list.append(player2)
-        position_input(player2 - 1 , 'O')
+        position_input(player2 - 1 , '⭕')
     
-        
         for i in win_conditions:
             if i[0] in player_2_list and i[1] in player_2_list and i[2] in player_2_list:
                 winner_found = "yes"
                 break
-        
+
         if winner_found == "yes":
             print_board()
-            print("Player 2 wins!")
+            print("bot wins! 🎉🎉🎉")
+            print("haha I won, better luck next time✌️")
+            break
+        if winner_found == "no" and len(player_1_list) + len(player_2_list) == 9:
+            print_board()
+            print("It's a draw! 🤝")
+            # print("wana play again?")
             break
         
 def player_vs_player():
@@ -103,30 +103,30 @@ def player_vs_player():
                 print("Invalid position. Please enter a number between 1 and 9.")
                 continue
             if player1 in player_1_list or player1 in player_2_list:
-                print("Position already taken. Please choose a different position.")
+                print("🫤🫤🫤 ❌ Position already taken. Please choose a different position.")
                 continue
         except ValueError:
             print("Invalid input. Please enter a number between 1 and 9.")
             continue
 
         player_1_list.append(player1)
-        position_input(player1 - 1 , 'X')
+        position_input(player1 - 1 , '❌')
         
         for i in win_conditions:
             if i[0] in player_1_list and i[1] in player_1_list and i[2] in player_1_list:
                 winner_found = "yes"
-                break        
+                break       
         if winner_found == "yes":
             print_board()
-            print("Player 1 wins!")
+            print("Player 1 wins! 🎉🎉🎉")
             break
 
         print_board()
 
         if winner_found == "no" and len(player_1_list) + len(player_2_list) == 9:
             print_board()
-            print("It's a draw!")
-            print("you won this time, but next time i will beat you! 🫤")
+            # print("wana play again?")
+            print("It's a draw! 🤝")
             break
     # Player 2 input
         try:
@@ -135,24 +135,32 @@ def player_vs_player():
                 print("Invalid position. Please enter a number between 1 and 9.")
                 continue
             if player2 in player_1_list or player2 in player_2_list:
-                print("Position already taken. Please choose a different position.")
+                print("🫤🫤🫤 ❌ Position already taken. Please choose a different position.")
                 continue
+            break
+    
         except ValueError:
             print("Invalid input. Please enter a number between 1 and 9.")
-            continue
+        
     
         player_2_list.append(player2)
-        position_input(player2 - 1 , 'O')
-    
+        position_input(player2 - 1 , '⭕')
+        
         for i in win_conditions:
             if i[0] in player_2_list and i[1] in player_2_list and i[2] in player_2_list:
                 winner_found = "yes"
                 break        
         if winner_found == "yes" :
             print_board()
-            print("bot wins!")
-            print("I won haha 🤣2, better luck next time")
+            print("Player 2 wins! 🎉🎉🎉")
             break
+        if winner_found == "no" and len(player_1_list) + len(player_2_list) == 9:
+            print_board()
+            print("It's a draw! 🤝")
+            # print("wana play again?")
+            break
+
+        
 option_1 = " player vs player"
 option_2 = " player vs bot"
 print("Choose a mode:")
